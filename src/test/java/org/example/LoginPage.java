@@ -1,5 +1,6 @@
 package org.example;
 
+import org.junit.AfterClass;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -14,9 +15,6 @@ public class LoginPage {
         this.driver = driver;
     }
 
-    String login = "aidarka2567";
-    String password = "qwerQWER1234";
-
     @FindBy(xpath = "//*[contains(@id, 'passp-field-login')]")
     private WebElement loginField;
 
@@ -25,6 +23,9 @@ public class LoginPage {
 
     @FindBy(xpath = "//*[contains(@id, 'passp-field-passwd')]")
     private WebElement passwdField;
+
+    @FindBy(xpath = "//*[contains(@id, 'passp:sign-in')]")
+    private WebElement signin;
 
     public void inputLogin(String login) {
         loginField.sendKeys(login);
@@ -35,5 +36,9 @@ public class LoginPage {
 
     public void clickLoginBtn() {
         loginBtn.click();
+    }
+
+    public void clicksignin(){
+        signin.click();
     }
 }
