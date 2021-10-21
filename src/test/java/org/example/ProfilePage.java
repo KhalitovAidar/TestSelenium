@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+
 public class ProfilePage {
 
     public WebDriver driver;
@@ -15,16 +16,17 @@ public class ProfilePage {
     }
 
     @FindBy(xpath = "//*[@id=\"root\"]/div/div[2]/div[1]/header/div[2]/div[2]/div/div/a[1]")
-    private WebElement accountbtn;
+    private WebElement accountBtn;
 
     @FindBy(xpath = "//*[@id=\"root\"]/div/div[2]/div[1]/header/div[2]/div[2]/div/div/div/ul/ul/li[1]/a")
-    private WebElement mailbtn;
+    private WebElement mailBtn;
 
-    public void clickaccountbtn(){
-        accountbtn.click();
+    public void clickAccountBtn(){
+        accountBtn.click();
     }
 
-    public void clickmailbtn(){
-        mailbtn.click();
+    public void clickMailBtn(){
+        mailBtn.click();
     }
+
 }
