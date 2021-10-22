@@ -5,7 +5,7 @@ import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import org.openqa.selenium.By;
+
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
@@ -14,13 +14,14 @@ import java.net.URL;
 
 import java.util.concurrent.TimeUnit;
 
-
 public class LoginTest {
 
     public static RemoteWebDriver driver;
     public static LoginPage loginPage;
-    public static ProfilePage profilePage;
     public static EmailPage emailPage;
+    public static MainPage mainPage;
+
+
 
     @BeforeClass
     public static void setup() throws MalformedURLException {
@@ -29,26 +30,25 @@ public class LoginTest {
 
         driver = new RemoteWebDriver(new URL("http://172.20.0.1:4444/wd/hub"), cap);
 
+        mainPage = new MainPage(driver);
         loginPage = new LoginPage(driver);
-        profilePage = new ProfilePage(driver);
         emailPage = new EmailPage(driver);
 
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(3 , TimeUnit.SECONDS);
-        driver.get(ConfProperties.getProperty("loginpage"));
+        driver.get(ConfProperties.getProperty("mainpage"));
 
     }
 
     @Test
     public void loginTest() {
 
+        mainPage.loginBtnClick();
+
         loginPage.inputLogin(ConfProperties.getProperty("login"));
         loginPage.clickLoginBtn();
         loginPage.inputPasswd(ConfProperties.getProperty("passw"));
         loginPage.clicksignin();
-
-        profilePage.clickAccountBtn();
-        profilePage.clickMailBtn();
 
         String messages = emailPage.findAmountMessages();
 
